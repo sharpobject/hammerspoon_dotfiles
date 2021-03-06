@@ -64,6 +64,11 @@ function cmd_l()
   end)
 end
 
+function expose_xd()
+  local delay = 100000
+  hs.eventtap.keyStroke({"cmd","alt","shift","ctrl","fn"},"f19", delay)
+end
+
 local spaces_layout = {
   {0,0}, {1,0},
   {0,1}, {1,1},
@@ -130,6 +135,7 @@ hs.hotkey.bind({"shift", "cmd", "alt"}, "left", move_space( 1, 0, true))
 hs.hotkey.bind({"shift", "cmd", "alt"}, "right", move_space(-1, 0, true))
 hs.hotkey.bind({"shift", "cmd", "alt"}, "up",    move_space( 0,-1, true))
 hs.hotkey.bind({"shift", "cmd", "alt"}, "down",  move_space( 0, 1, true))
+hs.hotkey.bind({"cmd", "alt"}, ".",  expose_xd)
 local cmd_l_binding = hs.hotkey.bind({"cmd"}, "l", cmd_l)
 
 appWatcher = hs.application.watcher.new(function(appname, event, app)
